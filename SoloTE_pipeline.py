@@ -229,7 +229,7 @@ te_annotation = tecounts2[4].str.split(":",expand=True)
 te_final_df = pd.concat([te_table,te_annotation],axis=1)
 te_final_df.columns=['TE_original_id','barcode','counts','Subfamily','Family','Class']
 te_final_df.replace("\?","",inplace=True,regex=True)
-locus_tes = te_final_df[te_final_df['TE_original_id'].str.contains("SoloTE\|chr")]
+locus_tes = te_final_df[te_final_df['TE_original_id'].str.contains("SoloTE\|*.\|")]
 
 legacy_df = te_final_df.groupby(['TE_original_id','barcode'],as_index=False)['counts'].sum()
 locus_df = locus_tes.groupby(['TE_original_id','barcode'],as_index=False)['counts'].sum()
